@@ -45,7 +45,7 @@ public class Product {
     private Sale sale;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "purchases_id", referencedColumnName = "id")
+    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
     private Purchase purchase;
 
     public Product() {
