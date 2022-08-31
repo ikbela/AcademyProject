@@ -41,7 +41,7 @@ public class Product {
     private Integer price;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sale_id", referencedColumnName = "id")
+    @JoinColumn(name = "sales_id", referencedColumnName = "id")
     private Sale sale;
 
     @OneToOne(cascade = CascadeType.ALL)
