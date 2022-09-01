@@ -15,7 +15,8 @@ public class SaleService {
 
 
     public List<Sale> allLastWeekSales(){
-        return  saleRepo.allSalesFromLastWeek();
+//        return  saleRepo.allSalesFromLastWeek();
+        return  saleRepo.findAll();
     }
 
 }
