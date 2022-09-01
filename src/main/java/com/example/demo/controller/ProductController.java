@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -37,7 +38,7 @@ public class ProductController {
         List<Product> allProducts= productService.getAllProductMinor10000();
         getPdf(allProducts);
         model.addAttribute(productService.getAllProductMinor10000());
-        return "productPage.jsp";
+        return "redirect:/product";
 
     }
 
@@ -45,7 +46,7 @@ public class ProductController {
     public void getPdf(List<Product> productToAdd)  {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("Minor_1000_prod"+LocalDateTime.now()+".pdf"));
+            PdfWriter.getInstance(document, new FileOutputStream("src/main/uploads/minor_1000/Minor_1000_prod "+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-mm-dd")) +".pdf"));
             document.open();
             PdfPTable table = new PdfPTable(4);
             addTableHeaderProduct(table);
