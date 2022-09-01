@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface SaleRepo extends CrudRepository<Sale,Long> {
 
-    @Query(value = "SELECT s FROM Sale WHERE DAY(NOW())-7<=DAY(s.createdAt)<DAY(NOW())",nativeQuery = true)
+    @Query(value = "SELECT s FROM sales WHERE DAY(NOW())-7<=DAY(s.createdAt)<DAY(NOW())",nativeQuery = true)
     List<Sale> allSalesFromLastWeek();
 
 }

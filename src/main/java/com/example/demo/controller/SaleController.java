@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class SaleController {
 @Autowired
 private SaleService saleService;
-    @GetMapping("/SalesPage")
+    @GetMapping("/")
 
     public String salesHomePage(Model model){
 
