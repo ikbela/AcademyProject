@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface PurchaseRepo extends CrudRepository<Long, Purchase> {
+public interface PurchaseRepo extends CrudRepository<Purchase,Long>{
 
     //List the purchases from last month
     @Query(value = "SELECT s FROM Sale WHERE DAY(NOW())-30<=DAY(s.createdAt)<DAY(NOW())",nativeQuery = true)
