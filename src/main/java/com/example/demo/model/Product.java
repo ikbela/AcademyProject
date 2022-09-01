@@ -52,15 +52,12 @@ public class Product {
 
     }
 
-    public Product(Long id, String name, String description, Date createdAt, Date updatedAt, Integer price, Sale sale, Purchase purchase) {
+    public Product( String name, String description, Integer price) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
         this.price = price;
-        this.sale = sale;
-        this.purchase = purchase;
+
     }
 
     public Long getId() {
