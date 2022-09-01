@@ -7,14 +7,14 @@ import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.time.LocalDateTime;
@@ -35,10 +35,14 @@ public class ProductController {
     }
     @GetMapping("/product/get-pdf")
     public String getMinor10000Pdf(Model model){
-        List<Product> allProducts= productService.getAllProductMinor10000();
-        getPdf(allProducts);
-        model.addAttribute(productService.getAllProductMinor10000());
-        return "redirect:/product";
+        try {
+            List<Product> allProducts= productService.getAllProductMinor10000();
+            getPdf(allProducts);
+            model.addAttribute("allProducts",productService.getAllProductMinor10000());
+            return "redirect:/product";
+        }
+        catch (Exception e){return  null;}
+
 
     }
 
