@@ -17,12 +17,11 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotEmpty(message="Please insert Name")
-    @Size(min=3, max = 50, message=" Product name must be longer than 3 characters")
+
+
     private String name;
 
-    @NotEmpty(message=" Description is required ")
-    @Size(min=3, max = 250, message=" Description must be 3 to 10 characters long")
+
     private String description;
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -37,7 +36,7 @@ public class Product {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    @NotEmpty(message="Price is required ")
+    
     private Integer price;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -53,7 +52,7 @@ public class Product {
     }
 
     public Product( String name, String description, Integer price) {
-        this.id = id;
+
         this.name = name;
         this.description = description;
         this.price = price;
