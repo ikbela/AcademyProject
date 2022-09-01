@@ -11,6 +11,6 @@ import java.util.List;
 public interface PurchaseRepo extends CrudRepository<Purchase,Long>{
 
     //List the purchases from last month
-    @Query(value = "SELECT s FROM Sale WHERE DAY(NOW())-30<=DAY(s.createdAt)<DAY(NOW())",nativeQuery = true)
+    @Query(value = "SELECT p FROM purchases WHERE DAY(NOW())-30<=DAY(s.createdAt)<DAY(NOW())",nativeQuery = true)
     List<Purchase> allPurchasesFromLastMonth();
 }
