@@ -21,10 +21,11 @@ public class Sale {
    @PositiveOrZero
    private Integer price;
 
-
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
+
+
 
     public Sale(Long id, String buyer, Integer price, Date createdAt) {
         this.id = id;

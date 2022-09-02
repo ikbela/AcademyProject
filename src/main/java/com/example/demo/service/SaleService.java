@@ -15,8 +15,19 @@ public class SaleService {
 
 
     public List<Sale> allLastWeekSales(){
-//        return  saleRepo.allSalesFromLastWeek();
-        return  saleRepo.findAll();
+        return  saleRepo.allSalesFromLastWeek();
+//        return  saleRepo.findAll();
+    }
+    
+    
+    
+    public String totalPrice(){
+        Integer totally=0;
+        for (Sale sl:allLastWeekSales()
+             ) {
+            totally+=sl.getPrice();
+        }
+        return totally.toString();
     }
 
 }
