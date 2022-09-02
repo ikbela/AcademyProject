@@ -34,7 +34,7 @@ public class UserController {
 
         String email= principal.getName();
         User user= userService.findByEmail(email);
-        user.setLastLogin(new Date());
+
         userService.create(user);
 
         if(user.getRoles().get(0).getName().contains("ROLE_ADMIN") || user.getRoles().get(0).getName().contains("ROLE_SUPER_ADMIN")) {

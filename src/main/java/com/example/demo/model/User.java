@@ -26,8 +26,7 @@ public class User {
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
-    private Date lastLogin;
-    //private String specialty;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
@@ -113,13 +112,7 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Date getLastLogin() {
-        return lastLogin;
-    }
 
-    public void setLastLogin(Date lastLogin) {
-        this.lastLogin = lastLogin;
-    }
 
 
 }

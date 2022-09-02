@@ -70,7 +70,7 @@ public class UploadsController {
 //    }
 
     public Long getFileSIze(String fileName) throws IOException {
-//        String fileName =  "src/main/uploads/TEST.csv";
+
         Path path = Paths.get(fileName);
 
             // size of a file (in bytes)

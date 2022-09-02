@@ -17,6 +17,10 @@ public class UploadsService {
        uploadsRepo.save(uploadedFile);
     }
 
+    public UploadedFile findById(Long id) {
+        return uploadsRepo.findById(id).orElse(null);
+    }
+
     public List<UploadedFile> allFiles() {
         List<UploadedFile> files= uploadsRepo.findAll();
         return files;
