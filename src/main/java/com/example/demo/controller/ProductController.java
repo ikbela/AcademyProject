@@ -13,12 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -28,7 +26,7 @@ public class ProductController {
     private ProductService productService;
     @GetMapping("/product")
     public String showProduct(Model model){
-        List<Product> allProducts= productService.getAllProducts();
+        List<Product> allProducts= productService.getAllProductMinor10000();
         model.addAttribute("allProducts",allProducts);
         return "productPage.jsp";
 
@@ -37,9 +35,9 @@ public class ProductController {
     public String getMinor10000Pdf(Model model){
         try {
             List<Product> allProducts= productService.getAllProductMinor10000();
-            getPdf(allProducts);
-            model.addAttribute("allProducts",productService.getAllProductMinor10000());
-            return "redirect:/product";
+
+            model.addAttribute("StringArray",getPdf(allProducts));
+            return "displayPdf.jsp";
         }
         catch (Exception e){return  null;}
 
@@ -47,19 +45,25 @@ public class ProductController {
     }
 
 
-    public void getPdf(List<Product> productToAdd)  {
+    public String getPdf(List<Product> productToAdd)  {
         try {
             Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream("src/main/uploads/minor_1000/Minor_1000_prod "+LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-mm-dd")) +".pdf"));
+            ByteArrayOutputStream baos=new ByteArrayOutputStream();
+            PdfWriter.getInstance(document, baos);
             document.open();
             PdfPTable table = new PdfPTable(4);
             addTableHeaderProduct(table);
             addRowsProduct(table,productToAdd);
             document.add(table);
             document.close();
+            String encodedString=Base64.getEncoder().encodeToString(baos.toByteArray());
+            return encodedString;
+
+
+
         }catch (Exception e){
 
-
+        return null;
         }
 
     }
