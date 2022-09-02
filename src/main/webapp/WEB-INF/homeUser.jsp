@@ -28,14 +28,16 @@
 
         <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
         <div>
-            <input type="submit" value="Submit" class="button btn-primary">
+            <input type="submit" value="Submit" >
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
 
-    <div>
-
-    </div>
+    <script language='javascript'>
+        <c:if test="${message!=null}">
+        window.alert('Succes');window.location='/showFiles';
+        </c:if>
+    </script>
 
 
 
