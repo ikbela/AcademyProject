@@ -17,9 +17,20 @@
 <body>
 
 
-    <textarea class="text-area"> <c:out value="${model}"></c:out></textarea>
+    <textarea class="text-area" cols="100" rows="40"> <c:out value="${model}"></c:out></textarea>
 
 
+<div>
+    <button id="decode">Decode</button>
+    <button id="encode">Encode</button>
+</div>
+
+    <p>
+        <a href="https://base64.guru/converter/decode/pdf">Copy text from textare and go and get pdf file preview :)</a>
+
+    </p>
+
+<script type="text/javascript" src="/doScript.js"> </script>
 
 </body>
 </html>

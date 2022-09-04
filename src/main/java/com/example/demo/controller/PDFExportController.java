@@ -32,12 +32,8 @@ public class PDFExportController {
         DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
         String currentDateTime = dateFormat.format(new Date());
 
-//        what kind of file we will return
-
         String headerKey="Content-Disposition";
-        //attachement is for downloading as soon as u click
-//        String headerValue="attachment; filename=pdf_"+currentDateTime+".pdf";
-//          inline to watch but not to download
+
         String headerValue="inline; filename=pdf_"+currentDateTime+".pdf";
         httpServletResponse.setHeader(headerKey,headerValue);
 
