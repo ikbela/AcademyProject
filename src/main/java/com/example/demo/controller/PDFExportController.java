@@ -49,6 +49,18 @@ public class PDFExportController {
 
     }
 
+    @GetMapping("/pdfPageHere")
+    public  String pdfPage(Model model,HttpServletResponse httpServletResponse){
+        try {
+            model.addAttribute("model1",pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (DocumentException e) {
+            throw new RuntimeException(e);
+        }
+        return "forPdf.jsp";
+    }
+
 
 
 }

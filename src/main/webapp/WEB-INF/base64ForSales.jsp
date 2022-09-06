@@ -31,6 +31,8 @@
         <a href="https://base64.guru/converter/decode/pdf" style="color: black">Copy text from textarea and go and get pdf file preview :)</a>
 
     </p>
+    <%--    new here--%>
+    <a href="/pdfPageHere" style="color: rgba(236,13,16,0.98)" class="d-flex justify-content-center"> get pdf</a>
 </div>
 
 
