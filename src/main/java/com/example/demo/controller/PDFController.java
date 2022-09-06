@@ -31,7 +31,7 @@ public class PDFController {
         this.pdfService = pdfService;
     }
 
-    @GetMapping("/convertPDF")
+    @GetMapping("/purchase/convertPDF")
     public String generatePDF(Model model, HttpServletResponse httpServletResponse) throws IOException, DocumentException {
         httpServletResponse.setContentType("application/pdf");
 
@@ -40,7 +40,7 @@ public class PDFController {
         return "purchaseDisplay.jsp";
         //return null;
     }
-@GetMapping("/generatePDF")
+@GetMapping("/purchase/generatePDF")
     private String displayPDF(Model model,HttpServletResponse response){
     try {
         model.addAttribute("generate",pdfService.export(response,purchaseService.allPurchasesOfLastMonth()));

@@ -1,9 +1,10 @@
-textarea {
+p {
     border-style: none;
     border-color: Transparent;
     overflow: auto;
     width: 100%;
     height: 100%;
+    rows:10;
 }
 .radial-gradient {
     position:fixed;
@@ -21,7 +22,7 @@ textarea {
             );
 }
 
-.container{
+.card-body{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,3 +31,26 @@ a{
     margin: 20px;
     margin-bottom: 300px;
 }
+.button{
+    display: block;
+    width: 115px;
+    height: 25px;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+#container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#example {
+    overflow-wrap: break-word;
+}
+
+

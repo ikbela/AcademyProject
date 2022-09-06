@@ -9,9 +9,9 @@
     <title>Display String</title>
 </head>
 <body>
-<div class="container">
-    <textarea>${displayString} </textarea>
-    <a href="/generatePDF">Generate PDF</a>
+<div class="container" id="container">
+    <p id="example" class="form-control">${displayString} </p>
+    <a class="button" href="/purchase/generatePDF">Generate PDF</a>
 </div>
 <%--<script >
    const base64Data =${displayString};
