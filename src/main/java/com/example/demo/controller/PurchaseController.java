@@ -13,14 +13,18 @@ public class PurchaseController {
     private PurchaseService purchaseService;
 
     @GetMapping("/purchase")
-    public String purchase(Model model){
+    public String purchase(Model model) {
         model.addAttribute("lastWeekPurchases", purchaseService.allPurchasesOfLastMonth());
-     //   model.addAttribute("lastWeekPurchases", purchaseService.allPurchases());
+        //   model.addAttribute("lastWeekPurchases", purchaseService.allPurchases());
 
         //TOTAL PRICE
         model.addAttribute("totalPrice", purchaseService.totalPrice());
         return "purchase.jsp";
     }
 
+    @GetMapping("/")
+    public String dashboard() {
+        return "dashboard.jsp";
+    }
 
 }

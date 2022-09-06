@@ -20,3 +20,13 @@ textarea {
                     at center, #3498db, #9b59b6
             );
 }
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+a{
+    margin: 20px;
+    margin-bottom: 300px;
+}

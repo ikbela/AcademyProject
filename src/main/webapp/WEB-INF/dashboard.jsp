@@ -17,7 +17,9 @@
 </head>
 <div class="radial-gradient">
     <div class="container">
-    <input type="button" src="/convertPDF" value="Encoded">
+        <a href="/purchase" style="color: black"> Go to Purchase Table</a>
+        <a href="/SalesPage" style="color: black"> Go to Sales Table</a>
+        <a href="/product" style="color: black"> Go to Products Table</a>
     </div>
 </div>
 </body>
