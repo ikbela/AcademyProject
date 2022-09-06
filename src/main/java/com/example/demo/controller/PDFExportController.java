@@ -20,6 +20,7 @@ public class PDFExportController {
 
    @Autowired
    private SaleService saleService;
+
     private final PDFGeneratorService pdfGeneratorService;
 
     public PDFExportController(PDFGeneratorService pdfGeneratorService) {
@@ -40,9 +41,14 @@ public class PDFExportController {
         this.pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales());
 
 
+
         model.addAttribute("model",pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales()));
+
         return "base64ForSales.jsp";
 
 
     }
+
+
+
 }

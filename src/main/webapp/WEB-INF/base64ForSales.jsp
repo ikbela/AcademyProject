@@ -13,22 +13,26 @@
 <html>
 <head>
     <title>Base 64 for sales</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 
+<div class="container d-flex flex-column">
+    <textarea class="text-area" cols="40" rows="20"> <c:out value="${model}"></c:out></textarea>
 
-    <textarea class="text-area" cols="100" rows="40"> <c:out value="${model}"></c:out></textarea>
 
+    <div class="d-flex justify-content-sm-between m-lg-5">
+        <button id="decode" class=" btn btn-outline-success">Decode</button>
+        <button id="encode" class="btn btn-outline-danger">Encode</button>
+    </div>
 
-<div>
-    <button id="decode">Decode</button>
-    <button id="encode">Encode</button>
-</div>
-
-    <p>
-        <a href="https://base64.guru/converter/decode/pdf">Copy text from textare and go and get pdf file preview :)</a>
+    <p class="d-flex justify-content-center">
+        <a href="https://base64.guru/converter/decode/pdf" style="color: black">Copy text from textarea and go and get pdf file preview :)</a>
 
     </p>
+</div>
+
 
 <script type="text/javascript" src="/doScript.js"> </script>
 

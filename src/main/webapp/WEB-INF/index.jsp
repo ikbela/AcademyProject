@@ -17,7 +17,7 @@
 </head>
 <body>
 
-<div class="container d-flex flex-column align-content-center">
+<div class="container d-flex flex-column align-content-center m-lg-5">
     <table class="table table-striped table-bordered">
         <thead>
         <h3 class="text-center">Sales Table</h3>
@@ -52,7 +52,7 @@
 
 
     <hr>
-    <a href="/getPdf" class="btn-outline-success text-center"> Click here to base64 code</a>
+    <a href="/getPdf" class="d-flex justify-content-center" style="color: black"> Click here to base64 code</a>
 
 </div>
 
