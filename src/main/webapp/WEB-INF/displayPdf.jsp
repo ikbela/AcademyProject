@@ -10,6 +10,6 @@ pageEncoding="ISO-8859-1"%>
     <title>Title</title>
 </head>
 <body>
-${file}
+<p>This is ${file}</p>
 </body>
 </html>

@@ -1,0 +1,22 @@
+textarea {
+    border-style: none;
+    border-color: Transparent;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+}
+.radial-gradient {
+    position:fixed;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
+
+    /*Fallback if gradeints don't work */
+    background: #9b59b6;
+    /*Linear gradient... */
+    background:
+            radial-gradient(
+                    at center, #3498db, #9b59b6
+            );
+}
