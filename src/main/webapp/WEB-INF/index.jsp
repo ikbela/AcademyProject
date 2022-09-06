@@ -14,47 +14,48 @@
 <head>
     <title>Sales Table</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/SalesStyle.css">
 </head>
 <body>
 
-<div class="container d-flex flex-column align-content-center m-lg-5">
-    <table class="table table-striped table-bordered">
+
+<h2 style="color: black">Sales Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
         <thead>
-        <h3 class="text-center">Sales Table</h3>
-        </thead>
-        <tbody>
-        <tr class="table-dark">
+        <tr >
             <th>Product</th>
             <th>Buyer</th>
             <th>Date</th>
             <th>Price</th>
 
         </tr>
+        </thead>
+        <tbody>
         <c:forEach items="${allSalesOfLastWeek}" var="sale">
-            <tr>
+        <tr>
 
-                <td><c:out value="${sale.product.name}"></c:out></td>
-                <td><c:out value="${sale.buyer}"></c:out></td>
-                <td> <fmt:formatDate value="${sale.createdAt}" pattern="yyyy-MM-dd" /></td>
-                <td><c:out value="${sale.price}"></c:out></td>
-            </tr>
+            <td><c:out value="${sale.product.name}"></c:out></td>
+            <td><c:out value="${sale.buyer}"></c:out></td>
+            <td> <fmt:formatDate value="${sale.createdAt}" pattern="yyyy-MM-dd" /></td>
+            <td><c:out value="${sale.price}"></c:out></td>
+        </tr>
         </c:forEach>
-        </tbody>
 
-        <tfoot>
-        <td>Total</td>
-        <td></td>
-        <td></td>
-        <td><c:out value="${total}"></c:out></td>
-        </tfoot>
+        <tr>
+            <td style="color: red; font-family: Algerian">Total</td>
+            <td></td>
+            <td></td>
+            <td style="color: red; font-family: Algerian"><c:out value="${total}"></c:out></td>
+        </tr>
 
+        <tbody>
     </table>
-
-
-    <hr>
-    <a href="/getPdf" class="d-flex justify-content-center" style="color: black"> Click here to base64 code</a>
-
 </div>
+<hr>
+<a href="/getPdf" class="d-flex justify-content-center" style="color: black"> Click here to base64 code</a>
 
+<script src="static/doScript.js" type="text/javascript"></script>
 </body>
+
 </html>

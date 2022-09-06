@@ -1,17 +1,20 @@
-let decode=document.querySelector('#decode');
-let encode=document.querySelector('#encode');
-let output=document.querySelector('textarea');
+var desktopBtn = $("#desktop");
+var mobileBtn = $("#mobile");
+var body = $("body");
 
+desktopBtn.on("click", function () {
+    body.addClass("large-screen");
+    togglePrimaryButtonStyle($(this));
+});
 
+mobileBtn.on("click", function () {
+    body.removeClass("large-screen");
+    togglePrimaryButtonStyle($(this));
+});
 
-
-    decode.addEventListener('click',()=>{
-        output.value= atob(output.value);
-
-    });
-
-    encode.addEventListener('click',()=>{
-        output.value= btoa(output.value);
-
-    });
+function togglePrimaryButtonStyle(el) {
+    var sibling = el.parent(".btn-group").siblings(".btn-group").find(".btn");
+    el.addClass("btn-primary");
+    sibling.removeClass("btn-primary").addClass("btn-default");
+}
 
