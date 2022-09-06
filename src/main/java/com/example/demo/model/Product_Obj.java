@@ -4,7 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 public class Product_Obj {
     @CsvBindByName
-    private String emer;
+    private String name;
     @CsvBindByName
     private String description;
     @CsvBindByName
@@ -12,12 +12,12 @@ public class Product_Obj {
     @CsvBindByName
     private String price;
 
-    public String getEmer() {
-        return emer;
+    public String getName() {
+        return name;
     }
 
-    public void setEmer(String emer) {
-        this.emer = emer;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -48,7 +48,7 @@ public class Product_Obj {
     }
 
     public Product_Obj(String name, String description, String date, String price) {
-        this.emer = name;
+        this.name = name;
         this.description = description;
         this.date = date;
         this.price = price;

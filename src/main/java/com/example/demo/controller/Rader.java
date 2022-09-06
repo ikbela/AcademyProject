@@ -1,9 +1,9 @@
+/*
 package com.example.demo.controller;
 
-import com.example.demo.model.Product;
-import com.example.demo.model.UploadedFile;
-import com.example.demo.model.Product_Obj;
+import com.example.demo.model.*;
 import com.example.demo.service.ProductService;
+import com.example.demo.service.SaleService;
 import com.example.demo.service.UploadsService;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
@@ -41,20 +41,22 @@ import java.util.Optional;
         ProductService productService;
         @Autowired
         UploadsService uploadsService;
+
+        @Autowired
+    SaleService saleService;
+
+        @Autowired
+        PurchaseSer
         private static String uploaded = "src/main/";
 
 
         @RequestMapping("/save/{id}")
         public String uploadCSVFile(@PathVariable("id") Long id) {
 
-
-
             UploadedFile file = uploadsService.findById(id);
                 if(uploadsService.findByFileNameContaining(file, "product").booleanValue()==true) {
-
             // parse CSV file to create a list of `User` objects)
          try (Reader reader = new BufferedReader(new FileReader(uploaded + file.getUrl()))) {
-//            try (Reader reader =(new FileReader(uploaded + file.getUrl()))) {
 
                 // create csv bean reader
                 CsvToBean<Product_Obj> csvToBean = new CsvToBeanBuilder(reader)
@@ -69,7 +71,7 @@ import java.util.Optional;
                 for (Product_Obj product_obj : products) {
                     Product p = new Product();
 
-                    p.setEmer(product_obj.getEmer());
+                    p.setName(product_obj.getName());
                     p.setDescription(product_obj.getDescription());
                     DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                     p.setDate(formatter.parse(product_obj.getDate()));
@@ -82,9 +84,77 @@ import java.util.Optional;
             }
                     return "redirect:/showFiles";}
 
-                else {
+           else-if(uploadsService.findByFileNameContaining(file, "sale").booleanValue()==true) {
+                // parse CSV file to create a list of `User` objects)
+                try (Reader reader = new BufferedReader(new FileReader(uploaded + file.getUrl()))) {
+
+                    // create csv bean reader
+                    CsvToBean<Sale_Obj> csvToBean = new CsvToBeanBuilder(reader)
+                            .withType(Sale_Obj.class)
+                            .withIgnoreLeadingWhiteSpace(false)
+                            .build();
+
+                    // convert `CsvToBean` object to list of users
+                    List<Sale_Obj> sales = csvToBean.parse();
+
+                    // TODO: save users in DB?
+                    for (Sale_Obj sale_obj : sales) {
+                        Sale s = new Sale();
+
+                        s.setProduct(sale_obj.getProduct());
+                        s.setBuyer(sale_obj.getBuyer());
+                        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                        s.setDate(formatter.parse(sale_obj.getDate()));
+                        s.setPrice(Integer.valueOf(sale_obj.getPrice()));
+                        saleService.save(s);
+                    }
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return "redirect:/showFiles";}
+
+
+
+           else-if(uploadsService.findByFileNameContaining(file, "purchase").booleanValue()==true) {
+                // parse CSV file to create a list of `User` objects)
+                try (Reader reader = new BufferedReader(new FileReader(uploaded + file.getUrl()))) {
+
+                    // create csv bean reader
+                    CsvToBean<Purchase_Obj> csvToBean = new CsvToBeanBuilder(reader)
+                            .withType(Purchase_Obj.class)
+                            .withIgnoreLeadingWhiteSpace(false)
+                            .build();
+
+                    // convert `CsvToBean` object to list of users
+                    List<Purchase_Obj> purchase = csvToBean.parse();
+
+                    // TODO: save users in DB?
+                    for (Product_Obj product_obj : products) {
+                        Product p = new Product();
+
+                        p.setName(product_obj.getName());
+                        p.setDescription(product_obj.getDescription());
+                        DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                        p.setDate(formatter.parse(product_obj.getDate()));
+                        p.setPrice(Integer.valueOf(product_obj.getPrice()));
+                        productService.save(p);
+                    }
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return "redirect:/showFiles";}
+
+
+
+
+
+
+            else {
             return "redirect:/showFiles";
-        }}
+        }
+        }
 
     public Long getFileSIze(String fileName) throws IOException {
 
@@ -105,3 +175,4 @@ import java.util.Optional;
         return f.getName();
     }
     }
+*/

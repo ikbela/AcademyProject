@@ -17,7 +17,7 @@ public class User {
     private String email;
 
     @Size(min=3)
-    private String fistName;
+    private String firstName;
     @Size(min=3)
     private String lastName;
     @Size(min=5)
@@ -34,8 +34,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
-
-
 
 
     public User() {
@@ -97,12 +95,12 @@ public class User {
         this.email = email;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {

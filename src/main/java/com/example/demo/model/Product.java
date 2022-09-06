@@ -3,13 +3,10 @@ package com.example.demo.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
-import java.util.List;
+
 @Entity
 @Table(name="products")
 public class Product {
@@ -21,7 +18,7 @@ public class Product {
 
     @Column(unique = true)
     @Size(min = 3)
-    private String emer;
+    private String name;
 
     @Size(min=3, max = 250, message=" Description must be 3 to 10 characters long")
     private String description;
@@ -47,20 +44,20 @@ public class Product {
 
     private Integer price;
 
-   /* @OneToOne(cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sale_id", referencedColumnName = "id")
-    private Sale sale;*/
+    private Sale sale;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
-//    private Purchase purchase;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "purchase_id", referencedColumnName = "id")
+ private Purchase purchase;
 
     public Product() {
 
     }
 
     public Product(String name, String description, Date date, Integer price) {
-        this.emer = name;
+        this.name = name;
         this.description = description;
         this.date = date;
         this.price = price;
@@ -77,12 +74,12 @@ public class Product {
     }
 
 
-    public String getEmer() {
-        return emer;
+    public String getName() {
+        return name;
     }
 
-    public void setEmer(String emer) {
-        this.emer = emer;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -125,19 +122,18 @@ public class Product {
         this.price = price;
     }
 
-/*    public Sale getSale() {
-        return sale;
-    }
-
+  public Sale getSale() {
+      return sale;
+  }
     public void setSale(Sale sale) {
         this.sale = sale;
     }
 
-    public Purchase getPurchase() {
+   public Purchase getPurchase() {
         return purchase;
     }
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
-    }*/
+    }
 }

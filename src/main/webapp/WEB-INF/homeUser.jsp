@@ -1,34 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>User Dashboard</title>
+    <title>Welcome Page</title>
+
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
+<%--Top of Page--%>
+<div class="topOfPage">
+    <div class="p-3">
+        <div class="d-flex align-items-center justify-content-between ">
+            <div class="d-md-inline-flex align-items-center  justify-content-between ">
+                <h2>Welcome, <c:out value="${currentUser.firstName}"></c:out></h2>
 
-
-    <h1>Hello ${currentUser.fistName}</h1>
-    <div>
-        <a href="/">Home</a>
-        <form id="logoutForm" method="POST" action="/logout" class="button btn-primary">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="submit" value="Logout!"/>
-        </form>
-
+                <a href="/showFiles" class="mx-2">
+                    <button class="btn btn-secondary">Show All Files</button>
+                </a>
+            </div>
+            <form id="logoutForm" method="POST" action="/logout">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input type="submit" value="Log out" class="btn btn-danger"/>
+            </form>
+        </div>
     </div>
+</div>
+<div class="card col-sm-4 my-1  container" style="background: #c9cfee">
     <form action="/upload" method="post" enctype="multipart/form-data" >
-        <h5>Select file: </h5>
-        <input type="file" name="url"/>
+        <h5 class="m-lg-2">Select a CSV file: </h5>
+        <input type="file" name="url" class="form-control"/>
 
-
-        <%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
         <div>
-            <input type="submit" value="Submit" >
+            <input type="submit" value="Submit" class="m-lg-3 btn btn-success">
         </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     </form>
@@ -40,7 +56,7 @@
     </script>
 
 
-
+</div>
 
 
 
