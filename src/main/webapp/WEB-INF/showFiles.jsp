@@ -16,14 +16,16 @@
         <th>Name</th>
         <th>Size</th>
         <th>Extention</th>
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${files}" var="files">
         <tr>
-            <td>${files.url}</td>
-            <td>${files.size}</td>
-            <td>${files.extention}</td>
+            <td>${files.fileName}</td>
+            <td>${files.size} Bytes</td>
+            <td>.${files.extention}</td>
+            <td ><a href="/save/${files.id}">Save</a> </td>
         </tr>
     </c:forEach>
 

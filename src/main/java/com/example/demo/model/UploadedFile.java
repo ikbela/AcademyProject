@@ -16,6 +16,8 @@ public class UploadedFile {
 
     private String extention;
 
+    private String fileName;
+
 
     public String getUrl() {
         return url;
@@ -57,9 +59,18 @@ public class UploadedFile {
     }
 
 
-    public UploadedFile(String url, Long size, String extention) {
+    public UploadedFile(String url, Long size, String extention, String fileName) {
         this.url = url;
         this.size = size;
         this.extention= extention;
+        this.fileName= fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }

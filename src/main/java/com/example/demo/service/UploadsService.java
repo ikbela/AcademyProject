@@ -26,4 +26,10 @@ public class UploadsService {
         return files;
 
     }
+
+    public Boolean findByFileNameContaining(UploadedFile file, String s) {
+       List<UploadedFile> files =uploadsRepo.findByFileNameContaining(s);
+        if(files.contains(file)) {return true; }
+        return  false;
+    }
 }

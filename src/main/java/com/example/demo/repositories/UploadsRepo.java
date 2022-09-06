@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface UploadsRepo extends CrudRepository<UploadedFile, Long> {
  List<UploadedFile> findAll();
+ List<UploadedFile> findByFileNameContaining(String s);
 }

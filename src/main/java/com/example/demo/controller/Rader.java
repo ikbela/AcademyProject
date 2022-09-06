@@ -47,7 +47,7 @@ import java.util.List;
         public String uploadCSVFile(@PathVariable("id") Long id) {
 
             UploadedFile file = uploadsService.findById(id);
-
+                if(uploadsService.findByFileNameContaining(file, "product")) {
 
             // parse CSV file to create a list of `User` objects)
          try (Reader reader = new BufferedReader(new FileReader(uploaded + file.getUrl()))) {
@@ -76,7 +76,8 @@ import java.util.List;
 
             } catch (Exception ex) {
                 ex.printStackTrace();
-            }
+            } }
+
             return "redirect:/showFiles";
         }
     }

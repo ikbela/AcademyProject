@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
+
 import javax.jws.WebParam;
 import java.io.File;
 import java.io.IOException;
@@ -58,6 +59,7 @@ public class UploadsController {
 
             file.setSize(getFileSIze("src/main"+ file.getUrl()));
             file.setExtention(getExtensionByStringHandling(file.getUrl()).orElse(null));
+            file.setFileName((getFileName(new File(file.getUrl()))).substring(0,getFileName(new File(file.getUrl())).lastIndexOf('.')));
 
         }
         model.addAttribute("files", uploadsService.allFiles());
@@ -84,4 +86,7 @@ public class UploadsController {
                 .map(f -> f.substring(filename.lastIndexOf(".") + 1));
     }
 
+    public String getFileName(File f){
+        return f.getName();
+    }
 }
