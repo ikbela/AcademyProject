@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Product;
+import com.example.demo.service.PDFGeneratorService;
 import com.example.demo.service.ProductService;
 
 import com.itextpdf.text.BaseColor;
@@ -13,9 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
 import java.util.stream.Stream;
@@ -24,6 +24,12 @@ import java.util.stream.Stream;
 public class ProductController {
     @Autowired
     private ProductService productService;
+    private final PDFGeneratorService pdfGeneratorService;
+
+    public ProductController(PDFGeneratorService pdfGeneratorService) {
+        this.pdfGeneratorService = pdfGeneratorService;
+    }
+
     @GetMapping("/product")
     public String showProduct(Model model){
         List<Product> allProducts= productService.getAllProductMinor10000();
@@ -37,7 +43,7 @@ public class ProductController {
             List<Product> allProducts= productService.getAllProductMinor10000();
 
             model.addAttribute("StringArray",getPdf(allProducts));
-            return "displayPdf.jsp";
+            return "displayProductPdf.jsp";
         }
         catch (Exception e){return  null;}
 

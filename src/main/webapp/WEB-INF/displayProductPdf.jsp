@@ -10,6 +10,7 @@ pageEncoding="ISO-8859-1"%>
     <title>Title</title>
 </head>
 <body>
-<p>This is ${file}</p>
+<embed src="data:application/pdf;base64,${StringArray}" type="application/pdf" width="100%" height="800px"/>
+
 </body>
 </html>
