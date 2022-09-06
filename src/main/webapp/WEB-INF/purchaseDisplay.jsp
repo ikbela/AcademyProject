@@ -11,6 +11,7 @@
 <body>
 <div class="container">
     <textarea>${displayString} </textarea>
+    <a href="/generatePDF">Generate PDF</a>
 </div>
 <%--<script >
    const base64Data =${displayString};
@@ -21,4 +22,5 @@ console.log(blob);
 </script> --%>
 
 </body>
+
 </html>

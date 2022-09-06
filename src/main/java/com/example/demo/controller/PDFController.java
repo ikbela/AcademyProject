@@ -40,6 +40,16 @@ public class PDFController {
         return "purchaseDisplay.jsp";
         //return null;
     }
-
+@GetMapping("/generatePDF")
+    private String displayPDF(Model model,HttpServletResponse response){
+    try {
+        model.addAttribute("generate",pdfService.export(response,purchaseService.allPurchasesOfLastMonth()));
+    } catch (IOException e) {
+        throw new RuntimeException(e);
+    } catch (DocumentException e) {
+        throw new RuntimeException(e);
+    }
+    return "pdfGenerator.jsp";
+}
 
 }
