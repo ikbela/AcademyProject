@@ -11,9 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -29,11 +30,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.List;
+import java.util.Optional;
 
-    @Controller
+@Controller
     public class Rader {
 
         @Autowired
@@ -46,8 +47,10 @@ import java.util.List;
         @RequestMapping("/save/{id}")
         public String uploadCSVFile(@PathVariable("id") Long id) {
 
+
+
             UploadedFile file = uploadsService.findById(id);
-                if(uploadsService.findByFileNameContaining(file, "product")) {
+                if(uploadsService.findByFileNameContaining(file, "product").booleanValue()==true) {
 
             // parse CSV file to create a list of `User` objects)
          try (Reader reader = new BufferedReader(new FileReader(uploaded + file.getUrl()))) {
@@ -76,8 +79,29 @@ import java.util.List;
 
             } catch (Exception ex) {
                 ex.printStackTrace();
-            } }
+            }
+                    return "redirect:/showFiles";}
 
+                else {
             return "redirect:/showFiles";
-        }
+        }}
+
+    public Long getFileSIze(String fileName) throws IOException {
+
+        Path path = Paths.get(fileName);
+
+        // size of a file (in bytes)
+        long bytes = Files.size(path);
+
+        return bytes; }
+
+    public Optional<String> getExtensionByStringHandling(String filename) {
+        return Optional.ofNullable(filename)
+                .filter(f -> f.contains("."))
+                .map(f -> f.substring(filename.lastIndexOf(".") + 1));
+    }
+
+    public String getFileName(File f){
+        return f.getName();
+    }
     }

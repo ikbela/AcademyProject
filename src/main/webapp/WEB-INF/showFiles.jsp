@@ -25,7 +25,7 @@
             <td>${files.fileName}</td>
             <td>${files.size} Bytes</td>
             <td>.${files.extention}</td>
-            <td ><a href="/save/${files.id}">Save</a> </td>
+            <td><a href="/save/${files.id}">Save</a> </td>
         </tr>
     </c:forEach>
 

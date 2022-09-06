@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -39,12 +40,17 @@ public class UploadsController {
             Path path=   Paths.get(uploaded  +url.getOriginalFilename());
             Files.write( path, bytes);
             String fileUrl= "/uploads/" + url.getOriginalFilename();
-            uploadsService.upload(fileUrl);
+            UploadedFile file= uploadsService.upload(fileUrl);
+            file.setSize(getFileSIze("src/main"+ file.getUrl()));
+            file.setExtention(getExtensionByStringHandling(file.getUrl()).orElse(null));
+            file.setFileName((getFileName(new File(file.getUrl()))).substring(0,getFileName(new File(file.getUrl())).lastIndexOf('.')));
+            uploadsService.save(file);
+
         }
         catch (IOException e) {
             e.printStackTrace();
-
         }
+
         redirect.addFlashAttribute("message", "SUCCESS");
         return "redirect:/";
     }

@@ -12,9 +12,13 @@ import java.util.List;
 public class UploadsService {
     @Autowired
     private UploadsRepo uploadsRepo;
-    public void upload(String url) {
+    public UploadedFile upload(String url) {
         UploadedFile uploadedFile= new UploadedFile(url);
-       uploadsRepo.save(uploadedFile);
+       return uploadsRepo.save(uploadedFile);
+    }
+
+    public void save(UploadedFile file) {
+        uploadsRepo.save(file);
     }
 
     public UploadedFile findById(Long id) {
@@ -29,7 +33,7 @@ public class UploadsService {
 
     public Boolean findByFileNameContaining(UploadedFile file, String s) {
        List<UploadedFile> files =uploadsRepo.findByFileNameContaining(s);
-        if(files.contains(file)) {return true; }
-        return  false;
+       return files.contains(file);
+
     }
 }
