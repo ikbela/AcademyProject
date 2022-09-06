@@ -48,7 +48,7 @@ public class PDFService {
 
 
         // String result1 = String.valueOf(Base64.getDecoder().decode(result));
-        Files.write(Paths.get("pdf.pdf"), bytes);
+        Files.write(Paths.get("PurchaseTable.pdf"), bytes);
         return result;
 
     }
@@ -68,13 +68,15 @@ public class PDFService {
     private void addPurchaseRows(PdfPTable table, List<Purchase> purchases) {
         for (Purchase p : purchases
         ) {
-           // table.addCell(p.getProduct().getName());
+           table.addCell(p.getProduct().getName());
             table.addCell(p.getDescription());
             table.addCell(p.getCreatedAt().toString());
             table.addCell(p.getPrice().toString());
 
         }
         table.addCell("Total");
+        table.addCell("");
+        table.addCell("");
         table.addCell(pService.totalPrice());
     }
 
