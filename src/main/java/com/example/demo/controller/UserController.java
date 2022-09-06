@@ -37,7 +37,7 @@ public class UserController {
 
         userService.create(user);
 
-        if(user.getRoles().get(0).getName().contains("ROLE_ADMIN") || user.getRoles().get(0).getName().contains("ROLE_SUPER_ADMIN")) {
+        if(user.getRoles().get(0).getName().contains("ROLE_ADMIN")) {
             model.addAttribute("currentUser", user);
             return "redirect:/admin";
 
@@ -54,7 +54,7 @@ public class UserController {
             return "register";
         }
         if(userService.allUsers().size()==0) {
-            userService.saveUserWithSuperAdminRole(user); }
+            userService.saveUserWithAdminRole(user); }
         else {
             userService.saveWithUserRole(user);
         }

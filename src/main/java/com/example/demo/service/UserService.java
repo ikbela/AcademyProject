@@ -37,16 +37,11 @@ public class UserService {
         user.setRoles(roleRepo.findByName("ROLE_ADMIN"));
         userRepo.save(user);
     }
-    public void saveDoctor(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(roleRepo.findByName("ROLE_DOCTOR"));
-        userRepo.save(user);
-    }
-    public void saveUserWithSuperAdminRole(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(roleRepo.findByName("ROLE_SUPER_ADMIN"));
-        userRepo.save(user);
-    }
+//    public void saveUserWithSuperAdminRole(User user) {
+//        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+//        user.setRoles(roleRepo.findByName("ROLE_SUPER_ADMIN"));
+//        userRepo.save(user);
+//    }
     public User findById(Long id) {
         return userRepo.findById(id).orElse(null);
     }
