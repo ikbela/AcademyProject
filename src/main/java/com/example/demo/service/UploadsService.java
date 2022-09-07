@@ -40,11 +40,12 @@ public class UploadsService {
     }
 
 
-    public void check(UploadedFile newfile) {
+    public  UploadedFile check(UploadedFile newfile) {
        // UploadedFile potentialFile = uploadsRepo.findByFileName(newfile.getFileName());
         if (uploadsRepo.findByUrl(newfile.getUrl())==null) {
-            uploadsRepo.save(newfile);
+          return     uploadsRepo.save(newfile);
         }
+            return  null;
         }
     }
 

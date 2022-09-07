@@ -44,17 +44,24 @@ public class UploadsController {
             String fileUrl= "/uploads/" + url.getOriginalFilename();
             UploadedFile newFile= new UploadedFile(fileUrl);
             try{
+
                 newFile.setSize(getFileSIze("src/main"+ newFile.getUrl()));
                 newFile.setExtention(getExtensionByStringHandling(newFile.getUrl()).orElse(null));
                 newFile.setFileName((getFileName(new File(newFile.getUrl()))).substring(0,getFileName(new File(newFile.getUrl())).lastIndexOf('.')));
-                uploadsService.check(newFile);
-               // redirect.addFlashAttribute("message", "SUCCESS");
+                if(uploadsService.check(newFile)!=null){
+                redirect.addFlashAttribute("message", "SUCCESS");
 //                uploadsService.save(newFile);
             }
+                else{
+                    redirect.addFlashAttribute("error", "error");
+                    return "redirect:/";
+
+                }
+            }
             catch (Exception e) {
-              //  e.printStackTrace();
+                e.printStackTrace();
                 redirect.addFlashAttribute("error", "error");
-               // return "redirect:/";
+                return "redirect:/";
             }
 
         }
@@ -62,11 +69,10 @@ public class UploadsController {
 
         catch (IOException e) {
          //e.printStackTrace();
-            redirect.addFlashAttribute("error", "error");
             return "redirect:/showFiles";
         }
 
-       // redirect.addFlashAttribute("message", "SUCCESS");
+     //   redirect.addFlashAttribute("message", "SUCCESS");
         return "redirect:/";
     }
 
