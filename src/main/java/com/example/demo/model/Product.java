@@ -15,7 +15,6 @@ public class Product {
     private Long id;
 
 
-
     @Column(unique = true)
     @Size(min = 3)
     private String name;
