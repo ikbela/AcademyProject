@@ -13,7 +13,7 @@
 <html>
 <head>
     <title>Sales Table</title>
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/SalesStyle.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
-        <tr >
+        <tr>
             <th>Product</th>
             <th>Buyer</th>
             <th>Date</th>
@@ -37,7 +37,7 @@
 
             <td><c:out value="${sale.product.name}"></c:out></td>
             <td><c:out value="${sale.buyer}"></c:out></td>
-            <td> <fmt:formatDate value="${sale.createdAt}" pattern="yyyy-MM-dd" /></td>
+            <td><fmt:formatDate value="${sale.date}" pattern="yyyy-MM-dd"/></td>
             <td><c:out value="${sale.price}"></c:out></td>
         </tr>
         </c:forEach>

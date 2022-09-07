@@ -21,11 +21,32 @@ public class Sale {
    @PositiveOrZero
    private Integer price;
 
+
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
 
 
+    @Column(updatable=false)
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Sale(Long id, String buyer, Integer price, Date createdAt, Date date, Product product) {
+        this.id = id;
+        this.buyer = buyer;
+        this.price = price;
+        this.createdAt = createdAt;
+        this.date = date;
+        this.product = product;
+    }
 
     public Sale(Long id, String buyer, Integer price, Date createdAt) {
         this.id = id;

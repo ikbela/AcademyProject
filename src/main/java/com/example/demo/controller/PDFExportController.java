@@ -18,8 +18,8 @@ import java.util.Date;
 @Controller
 public class PDFExportController {
 
-   @Autowired
-   private SaleService saleService;
+    @Autowired
+    private SaleService saleService;
 
     private final PDFGeneratorService pdfGeneratorService;
 
@@ -28,21 +28,20 @@ public class PDFExportController {
     }
 
     @GetMapping("/getPdf")
-   public String generatePDF(HttpServletResponse httpServletResponse, Model model) throws DocumentException, IOException {
-           httpServletResponse.setContentType("application/pdf");
-        DateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+    public String generatePDF(HttpServletResponse httpServletResponse, Model model) throws DocumentException, IOException {
+        httpServletResponse.setContentType("application/pdf");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
         String currentDateTime = dateFormat.format(new Date());
 
-        String headerKey="Content-Disposition";
+        String headerKey = "Content-Disposition";
 
-        String headerValue="inline; filename=pdf_"+currentDateTime+".pdf";
-        httpServletResponse.setHeader(headerKey,headerValue);
+        String headerValue = "inline; filename=pdf_" + currentDateTime + ".pdf";
+        httpServletResponse.setHeader(headerKey, headerValue);
 
-        this.pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales());
+        this.pdfGeneratorService.export(httpServletResponse, saleService.allLastWeekSales());
 
 
-
-        model.addAttribute("model",pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales()));
+        model.addAttribute("model", pdfGeneratorService.export(httpServletResponse, saleService.allLastWeekSales()));
 
         return "base64ForSales.jsp";
 
@@ -50,9 +49,9 @@ public class PDFExportController {
     }
 
     @GetMapping("/pdfPageHere")
-    public  String pdfPage(Model model,HttpServletResponse httpServletResponse){
+    public String pdfPage(Model model, HttpServletResponse httpServletResponse) {
         try {
-            model.addAttribute("model1",pdfGeneratorService.export(httpServletResponse,saleService.allLastWeekSales()));
+            model.addAttribute("model1", pdfGeneratorService.export(httpServletResponse, saleService.allLastWeekSales()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (DocumentException e) {
@@ -60,7 +59,5 @@ public class PDFExportController {
         }
         return "forPdf.jsp";
     }
-
-
 
 }
