@@ -18,22 +18,18 @@ public class Purchase {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @Size(min=3, message="Description must be greater than 3 characters")
+    @Size(min = 3, message = "Description must be greater than 3 characters")
     private String description;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
     @PositiveOrZero
     private Integer price;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
-    private Purchase purchase;
 
 
     public Purchase(Product product, String description, Date date, Integer price) {
@@ -51,7 +47,6 @@ public class Purchase {
     public Long getId() {
         return id;
     }
-
 
 
     public void setId(Long id) {
@@ -97,12 +92,5 @@ public class Purchase {
     public void setDate(Date date) {
         this.date = date;
     }
-
-    public Purchase getPurchase() {
-        return purchase;
-    }
-
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
-    }
 }
+
