@@ -26,7 +26,6 @@ public class Sale {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
 
-
     @Column(updatable=false)
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date date;
@@ -39,6 +38,13 @@ public class Sale {
         this.date = date;
     }
 
+    public Sale(Long id, String buyer, Integer price, Date createdAt) {
+        this.id = id;
+        this.buyer = buyer;
+        this.price = price;
+        this.createdAt = createdAt;
+    }
+
     public Sale(Long id, String buyer, Integer price, Date createdAt, Date date, Product product) {
         this.id = id;
         this.buyer = buyer;
@@ -48,12 +54,13 @@ public class Sale {
         this.product = product;
     }
 
-    public Sale(Long id, String buyer, Integer price, Date createdAt) {
-        this.id = id;
+    public Sale(Product product, String buyer, Date date, Integer price) {
+        this.product = product;
         this.buyer = buyer;
+        this.date = date;
         this.price = price;
-        this.createdAt = createdAt;
     }
+
 
     public Sale() {
     }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+<<<<<<< HEAD
 import com.example.demo.model.Purchase;
 import com.example.demo.repositories.PurchaseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,6 @@ public class PurchaseService {
         //return pRepo.findAll();
 
     }
-
-
-
     //Function to find the total
     public String totalPrice(){
         Integer total = 0;
@@ -32,11 +30,7 @@ public class PurchaseService {
         return total.toString();
     }
 
-   /* public List<Purchase> getLastThreeDays(){
-        LocalDate threeDaysAgoDate = LocalDate.now().minusDays(3);
-        System.out.println("threeDaysAgoDate"+threeDaysAgoDate);
-        return this.pRepo.findAllWithDateAfter(threeDaysAgoDate);
-
-    }*/
-
+    public void save(Purchase purchase) {
+        pRepo.save(purchase);
+    }
 }

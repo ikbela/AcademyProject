@@ -15,7 +15,13 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     @Size(min=3, message="Description must be greater than 3 characters")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
+
+    @Size(min = 3, message = "Description must be greater than 3 characters")
     private String description;
 
     @Column(updatable = false)
@@ -28,10 +34,6 @@ public class Purchase {
 
     @PositiveOrZero
     private Integer price;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", referencedColumnName = "id")
-    private Product product;
 
     //CONSTRUCTOR
 
@@ -51,10 +53,20 @@ public class Purchase {
         this.createdAt = createdAt;
         this.price = price;
         this.product = product;
+
+    }
+
+    public Purchase(Product product, String description, Date date, Integer price) {
+        this.product = product;
+        this.description = description;
+        this.date = date;
+        this.price = price;
+
     }
 
     public Purchase() {
-    }
+
+        }
 
     //GETTERS AND SETTERS
 
@@ -107,4 +119,6 @@ public class Purchase {
     public void setDate(Date date) {
         this.date = date;
     }
-}
+
+            }
+

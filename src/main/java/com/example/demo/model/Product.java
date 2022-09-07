@@ -18,15 +18,18 @@ public class Product {
     private Long id;
 
 
+    @Column(unique = true)
+    @Size(min = 3)
+    private String name;
+
+    @Size(min=3, max = 250, message=" Description must be 3 to 10 characters long")
+    private String description;
+
     @Column(updatable=false)
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date date;
-    private String name;
-
-
-    private String description;
     @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="dd-MM-yyyy")
     private Date createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
@@ -34,23 +37,36 @@ public class Product {
     protected void onCreate(){
         this.createdAt = new Date();
     }
-    @PreUpdate
+
+   @PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
+
+
     private Integer price;
 
-    @OneToOne(cascade = CascadeType.ALL)
+   @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sale_id", referencedColumnName = "id")
     private Sale sale;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "purchase_id", referencedColumnName = "id")
-    private Purchase purchase;
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(name = "purchase_id", referencedColumnName = "id")
+ private Purchase purchase;
 
     public Product() {
 
+    }
+
+    public Product(Long id, String name, String description, Date createdAt, Date updatedAt, Integer price, Sale sale, Purchase purchase) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.price = price;
+        this.sale = sale;
+        this.purchase = purchase;
     }
 
     public Product( String name, String description, Integer price, Date date) {
@@ -68,6 +84,7 @@ public class Product {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getName() {
         return name;
@@ -93,6 +110,14 @@ public class Product {
         this.createdAt = createdAt;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public Date getUpdatedAt() {
         return updatedAt;
     }
@@ -109,27 +134,18 @@ public class Product {
         this.price = price;
     }
 
-    public Sale getSale() {
-        return sale;
-    }
-
+  public Sale getSale() {
+      return sale;
+  }
     public void setSale(Sale sale) {
         this.sale = sale;
     }
 
-    public Purchase getPurchase() {
+   public Purchase getPurchase() {
         return purchase;
     }
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 }
