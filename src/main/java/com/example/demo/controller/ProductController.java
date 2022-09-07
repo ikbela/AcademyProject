@@ -37,13 +37,26 @@ public class ProductController {
         return "productPage.jsp";
 
     }
+    @GetMapping("/product/base64")
+    public String getProductBase64(Model model){
+        try {
+            List<Product> allProducts= productService.getAllProductMinor10000();
+
+            model.addAttribute("displayString",getPdf(allProducts));
+            return "displayProductPdf.jsp";
+        }
+        catch (Exception e){return  null;}
+
+    }
+
+
     @GetMapping("/product/get-pdf")
     public String getMinor10000Pdf(Model model){
         try {
             List<Product> allProducts= productService.getAllProductMinor10000();
 
-            model.addAttribute("StringArray",getPdf(allProducts));
-            return "displayProductPdf.jsp";
+            model.addAttribute("generate",getPdf(allProducts));
+            return "pdfGenerator.jsp";
         }
         catch (Exception e){return  null;}
 
