@@ -5,8 +5,10 @@ import com.example.demo.model.UploadedFile;
 import com.example.demo.repositories.UploadsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UploadsService {
@@ -36,4 +38,13 @@ public class UploadsService {
        return files.contains(file);
 
     }
-}
+
+
+    public void check(UploadedFile newfile) {
+       // UploadedFile potentialFile = uploadsRepo.findByFileName(newfile.getFileName());
+        if (uploadsRepo.findByUrl(newfile.getUrl())==null) {
+            uploadsRepo.save(newfile);
+        }
+        }
+    }
+

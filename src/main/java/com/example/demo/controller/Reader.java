@@ -93,11 +93,11 @@ import java.util.Optional;
                     for (Sale_Obj sale_obj : sales) {
                         Sale s = new Sale();
                         String product = sale_obj.getProduct();
-                        Object product1 = product;
-
+                       // Object product1 = product;
+                        //Product product1= productService.findByName(product);
                         /*ObjectMapper mapper = new ObjectMapper();
                         Product product = mapper.readValue(sale_obj.getProduct(), Product.class);*/
-                        s.setProduct((Product) product1);
+                        s.setProduct((Product) productService.findByName(product));
                         s.setBuyer(sale_obj.getBuyer());
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         s.setDate(formatter.parse(sale_obj.getDate()));

@@ -4,7 +4,6 @@ import com.example.demo.model.UploadedFile;
 import com.example.demo.model.User;
 import com.example.demo.service.UploadsService;
 import com.example.demo.service.UserService;
-import org.openjdk.jol.vm.VM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +12,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
-
-import javax.jws.WebParam;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.io.File;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -31,10 +27,13 @@ public class UploadsController {
 
     @Autowired
     private UserService userService;
+
+
+
     private static String uploaded= "src/main/uploads/";
 
     @PostMapping("/upload")
-    public String newBook(@RequestParam("url") MultipartFile url, RedirectAttributes redirect, Model model)
+    public String newBook(@RequestParam("url") MultipartFile url,RedirectAttributes redirect, Model model)
     {
         if(url.isEmpty()) {return "redirect:/";}
 
@@ -43,18 +42,31 @@ public class UploadsController {
             Path path=   Paths.get(uploaded  +url.getOriginalFilename());
             Files.write( path, bytes);
             String fileUrl= "/uploads/" + url.getOriginalFilename();
-            UploadedFile file= uploadsService.upload(fileUrl);
-            file.setSize(getFileSIze("src/main"+ file.getUrl()));
-            file.setExtention(getExtensionByStringHandling(file.getUrl()).orElse(null));
-            file.setFileName((getFileName(new File(file.getUrl()))).substring(0,getFileName(new File(file.getUrl())).lastIndexOf('.')));
-            uploadsService.save(file);
+            UploadedFile newFile= new UploadedFile(fileUrl);
+            try{
+                newFile.setSize(getFileSIze("src/main"+ newFile.getUrl()));
+                newFile.setExtention(getExtensionByStringHandling(newFile.getUrl()).orElse(null));
+                newFile.setFileName((getFileName(new File(newFile.getUrl()))).substring(0,getFileName(new File(newFile.getUrl())).lastIndexOf('.')));
+                uploadsService.check(newFile);
+               // redirect.addFlashAttribute("message", "SUCCESS");
+//                uploadsService.save(newFile);
+            }
+            catch (Exception e) {
+              //  e.printStackTrace();
+                redirect.addFlashAttribute("error", "error");
+               // return "redirect:/";
+            }
 
         }
+
+
         catch (IOException e) {
-            e.printStackTrace();
+         //e.printStackTrace();
+            redirect.addFlashAttribute("error", "error");
+            return "redirect:/showFiles";
         }
 
-        redirect.addFlashAttribute("message", "SUCCESS");
+       // redirect.addFlashAttribute("message", "SUCCESS");
         return "redirect:/";
     }
 
