@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface SaleRepo extends CrudRepository<Sale,Long> {
 
-    @Query(value = "SELECT * FROM sales WHERE WEEK(created_at,0)= WEEK(NOW(),0)-1",nativeQuery = true)
+    @Query(value = "SELECT * FROM sales WHERE WEEK(date,0)= WEEK(NOW(),0)-1",nativeQuery = true)
             //(s.createdAt, 0) = WEEK(NOW(), 0) - 1")
     List<Sale> allSalesFromLastWeek();
     List<Sale> findAll();

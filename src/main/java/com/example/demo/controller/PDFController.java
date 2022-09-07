@@ -37,7 +37,7 @@ public class PDFController {
 
         this.pdfService.export(httpServletResponse, purchaseService.allPurchasesOfLastMonth());
         model.addAttribute("displayString", pdfService.export(httpServletResponse, purchaseService.allPurchasesOfLastMonth()));
-        return "purchaseDisplay.jsp";
+        return "purchaseDisplay";
         //return null;
     }
 @GetMapping("/purchase/generatePDF")
@@ -49,7 +49,7 @@ public class PDFController {
     } catch (DocumentException e) {
         throw new RuntimeException(e);
     }
-    return "pdfGenerator.jsp";
+    return "pdfGenerator";
 }
 
 }

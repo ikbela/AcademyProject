@@ -43,7 +43,7 @@ public class PDFExportController {
 
         model.addAttribute("model", pdfGeneratorService.export(httpServletResponse, saleService.allLastWeekSales()));
 
-        return "base64ForSales.jsp";
+        return "base64ForSales";
 
 
     }
@@ -57,7 +57,7 @@ public class PDFExportController {
         } catch (DocumentException e) {
             throw new RuntimeException(e);
         }
-        return "forPdf.jsp";
+        return "forPdf";
     }
 
 }

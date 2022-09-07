@@ -14,4 +14,6 @@ public interface ProductRepo extends CrudRepository<Product,Long> {
     Product findByCreatedAt(Date date);
     @Query(value = "SELECT p FROM Product p WHERE p.price<=10000")
     List<Product> getPriceMinor();
+
+    Product findByName(String s);
     }

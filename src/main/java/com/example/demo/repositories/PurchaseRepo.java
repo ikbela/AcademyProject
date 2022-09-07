@@ -11,7 +11,7 @@ import java.util.List;
 public interface PurchaseRepo extends CrudRepository<Purchase,Long> {
 
     //List the purchases from last month
-   @Query(value= "SELECT * FROM purchases WHERE MONTH(NOW())-2 < MONTH(created_at) and MONTH(created_at)<= MONTH(NOW())-1 ",nativeQuery = true)
+   @Query(value= "SELECT * FROM purchases WHERE MONTH(NOW())-2 < MONTH(date) and MONTH(created_at)<= MONTH(NOW())-1 ",nativeQuery = true)
     List<Purchase> allPurchasesFromLastMonth();
 
 

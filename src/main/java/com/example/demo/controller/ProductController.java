@@ -43,7 +43,7 @@ public class ProductController {
             List<Product> allProducts= productService.getAllProductMinor10000();
 
             model.addAttribute("displayString",getPdf(allProducts));
-            return "displayProductPdf.jsp";
+            return "displayProductPdf";
         }
         catch (Exception e){return  null;}
 
@@ -56,7 +56,7 @@ public class ProductController {
             List<Product> allProducts= productService.getAllProductMinor10000();
 
             model.addAttribute("generate",getPdf(allProducts));
-            return "pdfGenerator.jsp";
+            return "pdfGenerator";
         }
         catch (Exception e){return  null;}
 

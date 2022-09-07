@@ -42,7 +42,7 @@
         </c:if>
 
         <c:if test="${currentUser.roles.get(0).name.contains('ROLE_ADMIN')}">
-        <a href="#" class="btn btn-danger">Convert</a>
+        <a href="/showFiles/home" class="btn btn-danger">Convert</a>
         </c:if>
     </td>
     </tr>

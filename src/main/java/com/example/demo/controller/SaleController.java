@@ -31,7 +31,7 @@ private SaleService saleService;
         model.addAttribute("allSalesOfLastWeek",saleService.allLastWeekSales());
         model.addAttribute("total",saleService.totalPrice());
 
-        return "SalesTableDisplay.jsp";
+        return "SalesTableDisplay";
     }
 
 

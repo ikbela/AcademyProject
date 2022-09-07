@@ -19,12 +19,12 @@ public class PurchaseController {
 
         //TOTAL PRICE
         model.addAttribute("totalPrice", purchaseService.totalPrice());
-        return "purchase.jsp";
+        return "purchase";
     }
 
-    @GetMapping("/")
+    @GetMapping("/showFiles/home")
     public String dashboard() {
-        return "dashboard.jsp";
+        return "dashboard";
     }
 
 }

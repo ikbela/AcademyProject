@@ -1,6 +1,4 @@
 package com.example.demo.service;
-
-<<<<<<< HEAD
 import com.example.demo.model.Purchase;
 import com.example.demo.repositories.PurchaseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
