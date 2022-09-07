@@ -18,6 +18,8 @@ public class UploadedFile {
 
     private String fileName;
 
+    private Boolean status=false;
+
 
     public String getUrl() {
         return url;
@@ -64,6 +66,7 @@ public class UploadedFile {
         this.size = size;
         this.extention= extention;
         this.fileName= fileName;
+
     }
 
     public String getFileName() {
@@ -72,5 +75,13 @@ public class UploadedFile {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 }

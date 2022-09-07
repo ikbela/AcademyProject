@@ -33,7 +33,14 @@
     <td>${files.fileName}</td>
     <td>${files.size} Bytes</td>
     <td>.${files.extention}</td>
-    <td><a href="/save/${files.id}" class="btn btn-primary">Save</a>
+    <td>
+        <c:if test="${!files.status}">
+            <a href="/save/${files.id}" class="btn btn-primary">Save</a>
+        </c:if>
+        <c:if test="${files.status}">
+            <a class="btn btn-secondary disabled">Disabled</a>
+        </c:if>
+
         <c:if test="${currentUser.roles.get(0).name.contains('ROLE_ADMIN')}">
         <a href="#" class="btn btn-danger">Convert</a>
         </c:if>

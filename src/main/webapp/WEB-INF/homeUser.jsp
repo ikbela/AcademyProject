@@ -26,6 +26,11 @@
         <div class="d-flex align-items-center justify-content-between ">
             <div class="d-md-inline-flex align-items-center  justify-content-between ">
                 <h2>Welcome, <c:out value="${currentUser.firstName}"></c:out></h2>
+                <c:if test="${error != null}">
+                    <div class="text-success" >
+                        <c:out value="${error}"></c:out>
+                    </div>
+                </c:if>
 
                 <a href="/showFiles" class="mx-2">
                     <button class="btn btn-secondary">Show All Files</button>
@@ -51,7 +56,13 @@
 
     <script language='javascript'>
         <c:if test="${message!=null}">
-        window.alert('Succes');window.location='/showFiles';
+        window.alert('Success');window.location='/showFiles';
+        </c:if>
+    </script>
+
+    <script language='javascript'>
+        <c:if test="${error!=null}">
+        window.alert('File already Exists');window.location='/';
         </c:if>
     </script>
 

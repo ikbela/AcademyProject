@@ -36,7 +36,7 @@ import java.util.Optional;
          SaleService saleService;
 
         @Autowired
-    PurchaseService purchaseService;
+    private PurchaseService purchaseService;
         private static String uploaded = "src/main/";
 
 
@@ -67,6 +67,8 @@ import java.util.Optional;
                     p.setDate(formatter.parse(product_obj.getDate()));
                     p.setPrice(Integer.valueOf(product_obj.getPrice()));
                     productService.save(p);
+                    file.setStatus(true);
+                    uploadsService.save(file);
                 }
 
             } catch (Exception ex) {
@@ -101,6 +103,8 @@ import java.util.Optional;
                         s.setDate(formatter.parse(sale_obj.getDate()));
                         s.setPrice(Integer.valueOf(sale_obj.getPrice()));
                         saleService.save(s);
+                        file.setStatus(true);
+                        uploadsService.save(file);
                     }
 
                 } catch (Exception ex) {
@@ -134,6 +138,8 @@ import java.util.Optional;
                         pr.setDate(formatter.parse(purchase_obj.getDate()));
                         pr.setPrice(Integer.valueOf(purchase_obj.getPrice()));
                         purchaseService.save(pr);
+                        file.setStatus(true);
+                        uploadsService.save(file);
                     }
 
                 } catch (Exception ex) {
