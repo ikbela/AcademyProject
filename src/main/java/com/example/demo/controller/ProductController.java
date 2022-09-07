@@ -100,7 +100,7 @@ public class ProductController {
         for (Product product:products) {
             table.addCell(product.getName());
             table.addCell(product.getDescription());
-            table.addCell( product.getCreatedAt().toString());
+            table.addCell( product.getDate().toString());
             table.addCell(product.getPrice().toString());
         }
 

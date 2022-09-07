@@ -18,7 +18,9 @@ public class Product {
     private Long id;
 
 
-
+    @Column(updatable=false)
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    private Date date;
     private String name;
 
 
@@ -51,8 +53,8 @@ public class Product {
 
     }
 
-    public Product( String name, String description, Integer price) {
-
+    public Product( String name, String description, Integer price, Date date) {
+        this.date=date;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -121,5 +123,13 @@ public class Product {
 
     public void setPurchase(Purchase purchase) {
         this.purchase = purchase;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
