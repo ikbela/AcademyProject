@@ -76,7 +76,7 @@ public class PDFGeneratorService {
         ) {
             table.addCell(s.getProduct().getName());
             table.addCell(s.getBuyer());
-            table.addCell(s.getCreatedAt().toString());
+            table.addCell(s.getDate().toString());
             table.addCell(s.getPrice().toString());
 
         }
