@@ -18,7 +18,7 @@
 <div class="radial-gradient">
     <div class="container">
 
-                    <div class="card-body text-center">
+                    <div class="card-body d-flex h-100 align-items-center">
                         <a href="/purchase" style="color: black" class="btn btn-outline-secondary"> Go to Purchase Table</a>
                         <a href="/SalesPage" style="color: black" class="btn btn-outline-secondary"> Go to Sales Table</a>
                         <a href="/product" style="color: black" class="btn btn-outline-secondary"> Go to Products Table</a>
