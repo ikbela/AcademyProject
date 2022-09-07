@@ -18,6 +18,10 @@ public class Purchase {
     @Size(min=3, message="Description must be greater than 3 characters")
     private String description;
 
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date date;
+
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
@@ -30,9 +34,20 @@ public class Purchase {
     private Product product;
 
     //CONSTRUCTOR
+
+
     public Purchase(Long id, String description, Date createdAt, Integer price, Product product) {
         this.id = id;
         this.description = description;
+        this.createdAt = createdAt;
+        this.price = price;
+        this.product = product;
+    }
+
+    public Purchase(Long id, String description, Date date, Date createdAt, Integer price, Product product) {
+        this.id = id;
+        this.description = description;
+        this.date = date;
         this.createdAt = createdAt;
         this.price = price;
         this.product = product;
@@ -83,5 +98,13 @@ public class Purchase {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -35,9 +35,9 @@
         <c:forEach items="${lastWeekPurchases}" var="purchase">
         <tr>
 
-            <td><c:out value="${purchase.product}"></c:out></td>
+            <td><c:out value="${purchase.product.getName()}"></c:out></td>
             <td><c:out value="${purchase.description}"></c:out></td>
-            <td><fmt:formatDate value="${purchase.createdAt}" pattern="yyyy-MM-dd"/></td>
+            <td><fmt:formatDate value="${purchase.date}" pattern="yyyy-MM-dd"/></td>
             <td><c:out value="${purchase.price}"></c:out></td>
         </tr>
         </c:forEach>

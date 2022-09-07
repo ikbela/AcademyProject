@@ -70,7 +70,7 @@ public class PDFService {
         ) {
            table.addCell(p.getProduct().getName());
             table.addCell(p.getDescription());
-            table.addCell(p.getCreatedAt().toString());
+            table.addCell(p.getDate().toString());
             table.addCell(p.getPrice().toString());
 
         }
