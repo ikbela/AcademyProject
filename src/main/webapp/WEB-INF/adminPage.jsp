@@ -13,6 +13,11 @@
     rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
     crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/styleMain.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href="/SalesStyle.css">
+    <link rel="stylesheet" href="css/styleMain.css">
 </head>
 <body>
 <div>
@@ -20,7 +25,7 @@
         <div class="p-3">
             <div class="d-flex align-items-center justify-content-between ">
                 <div class="d-md-inline-flex align-items-center  justify-content-between ">
-                    <h2>Welcome, <c:out value="${currentUser.firstName}"></c:out></h2>
+                    <h2 style="color: black">Welcome, <c:out value="${currentUser.firstName}"></c:out></h2>
 
                     <a href="/showFiles" class="mx-2">
                         <button class="btn btn-secondary">Show All Files</button>
@@ -35,7 +40,7 @@
     </div>
 <div class="container">
     <c:if test="${currentUser.roles.get(0).name.contains('ROLE_ADMIN')}">
-        <table class="table table-striped ">
+        <table class="fl-table">
             <thead>
             <tr>
                 <th>Name</th>

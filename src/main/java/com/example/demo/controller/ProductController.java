@@ -34,7 +34,7 @@ public class ProductController {
     public String showProduct(Model model){
         List<Product> allProducts= productService.getAllProductMinor10000();
         model.addAttribute("allProducts",allProducts);
-        return "productPage.jsp";
+        return "productPage";
 
     }
     @GetMapping("/product/base64")

@@ -13,14 +13,17 @@
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
             crossorigin="anonymous">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/SalesStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <body>
 <div class="container">
 <h3 class="text-center">Files</h3>
-<table class="table table-bordered table-striped">
+<table class="fl-table">
 <thead>
-<tr class="table-primary text-center">
+<tr class="text-center">
     <th>Name</th>
     <th>Size</th>
     <th>Extention</th>
@@ -49,6 +52,8 @@
 </c:forEach>
 </tbody>
 </table>
+    <a href="/" class="btn fa fa-angle-left" style="font-size:48px;color:red;display: flex;
+    justify-content: end;"></a>
 </div>
 </body>
 </html>
