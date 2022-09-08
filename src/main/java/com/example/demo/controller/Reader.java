@@ -93,10 +93,7 @@ import java.util.Optional;
                     for (Sale_Obj sale_obj : sales) {
                         Sale s = new Sale();
                         String product = sale_obj.getProduct();
-                       // Object product1 = product;
-                        //Product product1= productService.findByName(product);
-                        /*ObjectMapper mapper = new ObjectMapper();
-                        Product product = mapper.readValue(sale_obj.getProduct(), Product.class);*/
+
                         s.setProduct((Product) productService.findByName(product));
                         s.setBuyer(sale_obj.getBuyer());
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -130,9 +127,9 @@ import java.util.Optional;
 
                     for (Purchase_Obj purchase_obj : purchases) {
                        Purchase pr = new Purchase();
-                        ObjectMapper mapper = new ObjectMapper();
-                        Product product = mapper.readValue(purchase_obj.getProduct(), Product.class);
-                        pr.setProduct(product);
+                        String product = purchase_obj.getProduct();
+
+                        pr.setProduct((Product) productService.findByName(product));
                         pr.setDescription(purchase_obj.getDescription());
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         pr.setDate(formatter.parse(purchase_obj.getDate()));
