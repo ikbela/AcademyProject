@@ -45,7 +45,18 @@
         </c:if>
 
         <c:if test="${currentUser.roles.get(0).name.contains('ROLE_ADMIN')}">
-        <a href="/showFiles/home" class="btn btn-danger">Convert</a>
+            <c:choose>
+                <c:when test="${fn:contains(files.fileName, 'product')}">
+                    <a href="/product" class="btn btn-danger">Convert</a>
+                </c:when>
+                <c:when test="${fn:contains(files.fileName, 'sale')}">
+                    <a href="/SalesPage" class="btn btn-danger">Convert</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/purchase" class="btn btn-danger">Convert</a>
+                </c:otherwise>
+            </c:choose>
+
         </c:if>
     </td>
     </tr>
