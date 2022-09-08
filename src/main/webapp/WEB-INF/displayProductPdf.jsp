@@ -12,6 +12,7 @@ pageEncoding="ISO-8859-1"%>
     <link rel="stylesheet" href="/SalesStyle.css">
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Base 64 for sales</title>
 </head>
 <body>
@@ -23,8 +24,8 @@ pageEncoding="ISO-8859-1"%>
     </div>
 
     <div class="d-flex justify-content-sm-between m-lg-5">
-        <a href="/product/get-pdf" style="color: rgba(236,13,16,0.98)" class="d-flex justify-content-center"> get pdf</a>
-        <a href="/product" style="color: green" class="d-flex justify-content-center">Go back</a>
+        <a href="/product/get-pdf" class="btn fa fa-file-pdf-o m-lg-2 " style="font-size:50px;color:green;"></a>
+        <a href="/product" class="btn fa fa-angle-left" style="font-size:48px;color:red"></a>
     </div>
 
 </div>

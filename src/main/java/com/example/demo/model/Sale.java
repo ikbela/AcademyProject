@@ -12,22 +12,22 @@ import java.util.Date;
 public class Sale {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Size(min=3, message="Username must be greater than 3 characters")
+    @Size(min = 3, message = "Username must be greater than 3 characters")
     private String buyer;
 
-   @PositiveOrZero
-   private Integer price;
+    @PositiveOrZero
+    private Integer price;
 
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createdAt;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date date;
 
     public Date getDate() {
@@ -77,7 +77,6 @@ public class Sale {
     public void setProduct(Product product) {
         this.product = product;
     }
-
 
 
     public Long getId() {

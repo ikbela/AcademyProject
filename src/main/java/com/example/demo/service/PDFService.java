@@ -69,9 +69,9 @@ public class PDFService {
         for (Purchase p : purchases
         ) {
            table.addCell(p.getProduct().getName());
-            table.addCell(p.getDescription());
+            table.addCell(p.getProduct().getDescription());
             table.addCell(p.getDate().toString());
-            table.addCell(p.getPrice().toString());
+            table.addCell(p.getProduct().getPrice().toString());
 
         }
         table.addCell("Total");

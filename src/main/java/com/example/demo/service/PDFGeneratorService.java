@@ -77,7 +77,7 @@ public class PDFGeneratorService {
             table.addCell(s.getProduct().getName());
             table.addCell(s.getBuyer());
             table.addCell(s.getDate().toString());
-            table.addCell(s.getPrice().toString());
+            table.addCell(s.getProduct().getPrice().toString());
 
         }
         table.addCell("Totali");

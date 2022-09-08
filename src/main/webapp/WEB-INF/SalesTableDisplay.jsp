@@ -38,7 +38,7 @@
             <td><c:out value="${sale.product.name}"></c:out></td>
             <td><c:out value="${sale.buyer}"></c:out></td>
             <td><fmt:formatDate value="${sale.date}" pattern="yyyy-MM-dd"/></td>
-            <td><c:out value="${sale.price}"></c:out></td>
+            <td><c:out value="${sale.product.price}"></c:out></td>
         </tr>
         </c:forEach>
 

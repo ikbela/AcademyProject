@@ -16,12 +16,12 @@ public class Purchase {
     private Long id;
 
 
-    @Size(min=3, message="Description must be greater than 3 characters")
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @Size(min = 3, message = "Description must be greater than 3 characters")
+
     private String description;
 
     @Column(updatable = false)
