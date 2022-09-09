@@ -46,8 +46,8 @@ public class Purchase {
         this.product = product;
     }
 
-    public Purchase(Long id, String description, Date date, Date createdAt, Integer price, Product product) {
-        this.id = id;
+    public Purchase(String description, Date date, Date createdAt, Integer price, Product product) {
+
         this.description = description;
         this.date = date;
         this.createdAt = createdAt;

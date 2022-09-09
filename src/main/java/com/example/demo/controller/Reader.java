@@ -95,6 +95,7 @@ import java.util.Optional;
                         String product = sale_obj.getProduct();
 
                         s.setProduct((Product) productService.findByName(product));
+                        productService.findByName(product).setSale(s);
                         s.setBuyer(sale_obj.getBuyer());
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         s.setDate(formatter.parse(sale_obj.getDate()));
@@ -130,6 +131,7 @@ import java.util.Optional;
                         String product = purchase_obj.getProduct();
 
                         pr.setProduct((Product) productService.findByName(product));
+                        productService.findByName(product).setPurchase(pr);
                         pr.setDescription(purchase_obj.getDescription());
                         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
                         pr.setDate(formatter.parse(purchase_obj.getDate()));
