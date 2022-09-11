@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/SalesStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Purchase Table</title>
 </head>
 <body>
@@ -53,7 +54,10 @@
     </table>
 </div>
 <hr>
-<a href="/purchase/convertPDF" class="d-flex justify-content-center" style="color: black"> Click here to base64 code</a>
+<div class="d-flex justify-content-around">
+    <a href="/purchase/convertPDF" class="d-flex justify-content-center" style="color: black"> Click here to base64 code</a>
+    <a href="/showFiles" class="btn fa fa-angle-left" style="font-size:48px;color:red"></a>
+</div>
 
 <script src="static/doScript.js" type="text/javascript"></script>
 
