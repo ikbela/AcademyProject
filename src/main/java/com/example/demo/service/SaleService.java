@@ -28,7 +28,7 @@ public class SaleService {
         Integer totally=0;
         for (Sale sl:allLastWeekSales()
              ) {
-            totally+=sl.getPrice();
+            totally+=sl.getProduct().getPrice();
         }
         return totally.toString();
     }

@@ -23,7 +23,7 @@ public class PurchaseService {
     public String totalPrice(){
         Integer total = 0;
         for(Purchase purchase : allPurchasesOfLastMonth()){
-            total += purchase.getPrice();
+            total += purchase.getProduct().getPrice();
         }
         return total.toString();
     }
